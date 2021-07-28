@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+      rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/css/home.css">
+    <!-- Notice that we have to use only css/filename for stylesheets because we used app.use(express.static('assets')) in index.js  -->
+    <title>ToDo List</title>
+</head>
+<body>
+    <div id="todo-container">
+            <h1 id="app-heading">ToDo APP</h1>
+        <form action="/submit-task" method="post">
+            <div class="input-div">
+                <label for="description"> <p>DESCRIPTION</p>
+                    <input type="text" name="description" id="description" placeholder="What do you need to do ?" required>
+                </label>
+            </div>
+            <div class="input-div">
+                <label for="category" class="label50"> <p>CATEGORY</p>
+                    <select name="category" id="category">
+                        <option value="" selected hidden disabled>Choose a category</option>
+                        <option value="personal">Personal</option>
+                        <option value="work">Work</option>
+                        <option value="school">School</option>
+                        <option value="cleaning">Cleaning</option>
+                        <option value="other">Other</option>
+                    </select>
+                </label>
+                <label for="due_date" class="label50"> <p>DUE DATE</p>
+                    <input type="date" name="due_date" id="due_date">
+                </label>
+            </div>
+            <div class="btn-div">
+                <button type="submit" id="add-btn"><i class="fas fa-plus"></i>ADD TASKS</button>
+                <button type="submit" id="delete-btn"><i class="fas fa-trash-alt"></i>DELETE TASKS</button>
+            </div>
+        </form>
+
+        <ul>
+            <li>
+                <label for="id1">
+                    <input type="checkbox" class="toggle" id="id1">
+                    <div class="task-list">
+                        <p class="task-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam, amet.sads s</p>
+                        <p class="task-date"><i class="far fa-calendar-alt"></i> 20/05/2020</p>
+                    </div>
+                </label>
+                <button class="work btn">work</button>
+            </li>
+            <li>
+                <label for="id2">
+                    <input type="checkbox" name="" id="id2">
+                    Item
+                </label>
+                <button class="personal btn" >personal</button>
+            </li>
+            <li>
+                <label for="id2">
+                    <input type="checkbox" name="" id="id2">
+                    Item
+                </label>
+                <button class="cleaning btn" >cleaning</button>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>
