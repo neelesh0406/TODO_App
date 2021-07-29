@@ -130,7 +130,7 @@ li{
    list-style: none; 
    width: 100%;
    margin-left: -10%;
-   border-top: 3px solid rgb(200, 200, 200);   
+   border-top: .5px solid rgb(200, 200, 200);   
    padding: 20px 20px;
    display: flex;
    justify-content: space-between;
@@ -166,7 +166,7 @@ li label{
     color: grey;
 }
 
-.btn {
+li button {
     width: 18%;
     min-width: 70px;
     font-family: sans-serif;

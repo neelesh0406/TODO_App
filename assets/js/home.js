@@ -1,0 +1,1 @@
+console.log("u=idsnad ain sa  in js file")

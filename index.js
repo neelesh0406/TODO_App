@@ -3,6 +3,7 @@ const app = express();
 const port = 8000;
 
 const db = require('./config/mongoose'); // Imported mongoose configuration
+const TodoList = require('./models/todo_model');
 
 app.set('view engine', 'ejs');
 app.set('views', 'views');

@@ -37,36 +37,32 @@
             </div>
             <div class="btn-div">
                 <button type="submit" id="add-btn"><i class="fas fa-plus"></i>ADD TASKS</button>
-                <button type="submit" id="delete-btn"><i class="fas fa-trash-alt"></i>DELETE TASKS</button>
+                <a href="/delete-task"><button type="button" id="delete-btn"><i class="fas fa-trash-alt"></i>DELETE TASKS</button></a>
             </div>
         </form>
 
         <ul>
-            <li>
-                <label for="id1">
-                    <input type="checkbox" class="toggle" id="id1">
-                    <div class="task-list">
-                        <p class="task-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam, amet.sads s</p>
-                        <p class="task-date"><i class="far fa-calendar-alt"></i> 20/05/2020</p>
-                    </div>
-                </label>
-                <button class="work btn">work</button>
-            </li>
-            <li>
-                <label for="id2">
-                    <input type="checkbox" name="" id="id2">
-                    Item
-                </label>
-                <button class="personal btn" >personal</button>
-            </li>
-            <li>
-                <label for="id2">
-                    <input type="checkbox" name="" id="id2">
-                    Item
-                </label>
-                <button class="cleaning btn" >cleaning</button>
-            </li>
-        </ul>
+            <% for(let i of tasks_list) { %>
+                <li>
+                    <label for=<%= i._id %>>
+                        <input type="checkbox" class="toggle" id=<%= i._id %>>
+                        <div class="task-list">
+                            <p class="task-text"><%= i.description %></p>
+                            <p class="task-date"><i class="far fa-calendar-alt"></i> 
+                                <% if(i.due_date != null) { %>
+                                <% let mydate = new Date(i.due_date); %><%= mydate.toDateString() %>
+                                <% } else { %>
+                                    No Deadline
+                                <% } %>
+                            </p>
+                        </div>
+                    </label>
+                    <% if(i.category.length >0) {%>
+                    <button class= <%= i.category %> > <%= i.category %></button>
+                    <% } %>
+                </li>
+                <% } %>
+            </ul>
     </div>
 </body>
 </html>
