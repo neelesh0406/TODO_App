@@ -2,11 +2,14 @@ const express = require('express');
 const app = express();
 const port = 8000;
 
-app.use('/', require('./routes/index'));
+const db = require('./config/mongoose'); // Imported mongoose configuration
 
 app.set('view engine', 'ejs');
 app.set('views', 'views');
 app.use(express.static('assets')); //For accessing css,js, images files in assets folder
+app.use(express.urlencoded()); //for form data
+
+app.use('/', require('./routes/index'));
 
 app.listen(port, (err) => {
     if(err){
