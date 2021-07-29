@@ -8,6 +8,7 @@
       rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous"
     />
     <link rel="stylesheet" href="/css/home.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- Notice that we have to use only css/filename for stylesheets because we used app.use(express.static('assets')) in index.js  -->
     <title>ToDo List</title>
 </head>
@@ -37,32 +38,37 @@
             </div>
             <div class="btn-div">
                 <button type="submit" id="add-btn"><i class="fas fa-plus"></i>ADD TASKS</button>
-                <a href="/delete-task"><button type="button" id="delete-btn"><i class="fas fa-trash-alt"></i>DELETE TASKS</button></a>
+                <a onclick=deleteTask()><button type="button" id="delete-btn"><i class="fas fa-trash-alt"></i>DELETE TASKS</button></a>
             </div>
         </form>
 
-        <ul>
-            <% for(let i of tasks_list) { %>
-                <li>
-                    <label for=<%= i._id %>>
-                        <input type="checkbox" class="toggle" id=<%= i._id %>>
-                        <div class="task-list">
-                            <p class="task-text"><%= i.description %></p>
-                            <p class="task-date"><i class="far fa-calendar-alt"></i> 
-                                <% if(i.due_date != null) { %>
-                                <% let mydate = new Date(i.due_date); %><%= mydate.toDateString() %>
-                                <% } else { %>
-                                    No Deadline
-                                <% } %>
-                            </p>
-                        </div>
-                    </label>
-                    <% if(i.category.length >0) {%>
-                    <button class= <%= i.category %> > <%= i.category %></button>
+        <form action="/delete-task" method="POST" id="list-form">
+            <ul>
+                <% for(let i of tasks_list) { %>
+                    <li>
+                        <label for=<%= i._id %>>
+                            <input type="checkbox" name="checked" class="toggle" value=<%= i._id %> id=<%= i._id %>>
+                            <div class="task-list">
+                                <p class="task-text"><%= i.description %></p>
+                                <p class="task-date"><i class="far fa-calendar-alt"></i> 
+                                    <% if(i.due_date != null) { %>
+                                    <% let mydate = new Date(i.due_date); %><%= mydate.toDateString() %>
+                                    <% } else { %>
+                                        No Deadline
+                                    <% } %>
+                                </p>
+                            </div>
+                        </label>
+                        <% if(i.category.length >0) {%>
+                        <button class= <%= i.category %> > <%= i.category %></button>
+                        <% } %>
+                    </li>
                     <% } %>
-                </li>
-                <% } %>
             </ul>
+        </form>
+        <!-- The list is enclosed within a form so that when any task is checked and "delete" button is pressed, the values corresponding to input checkboxes is passed on forward through the action link-->
+        <!-- button with id "delete-btn" will be used to submit the form with id "list-form". That is why a function is needed on that button (defined in js file attached at the bottom) to post the link-->
     </div>
+    <script src="/js/home.js"></script>
 </body>
 </html>
