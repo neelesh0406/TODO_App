@@ -192,9 +192,12 @@ li button {
     background-color: rgb(255, 126, 152);
 }
 
-/* .toggle:checked ~ body{
-    background-color: red;
-} */
+/* .toggle class is for checkboxes. When checkbox is checked this will strike through the text and fade it's color too */
+.toggle[type="checkbox"]:checked + div.task-list > p{
+    text-decoration: line-through;
+    color: rgb(144, 144, 144);
+}
+
 
 @media only screen and (max-width: 720px) {
     :root{
